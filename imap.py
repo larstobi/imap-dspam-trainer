@@ -23,12 +23,14 @@ while file:
         user = strip(val)
     elif var == 'password':
         password = strip(val)
-    elif var == 'folder':
-        folder = strip(val)
+    elif var == 'imapfolder':
+        imapfolder = strip(val)
+    elif var == 'localfolder':
+        localfolder = strip(val)
 
 server = IMAP4(host,port)
 server.login(user,password)
-r = server.select(folder)
+r = server.select(imapfolder)
 r, data = server.search(None, "(ALL)")
 
 tmpdata = data[0]
@@ -36,7 +38,7 @@ uids = tmpdata.split()
 
 for uid in data[0].split():
     r, data = server.fetch(uid, '(RFC822)')
-    file = open('/home/larstobi/imap/INBOX/cur/'+uid, 'w')
+    file = open(localfolder+'/'+uid, 'w')
     file.write(data[0][1])
     file.close()
 
