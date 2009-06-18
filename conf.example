@@ -1,0 +1,6 @@
+host=localhost
+port=143
+user=myusername
+password=mypassword
+imapfolder=INBOX
+localfolder=/home/myusername/imap-dspam-trainer/INBOX.spam/cur
