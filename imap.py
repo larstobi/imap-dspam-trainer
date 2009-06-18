@@ -1,9 +1,15 @@
 from imaplib import *
 from string import *
+import sys
+import getopt
 
 configfile = "/home/larstobi/imap/config"
-file = open(configfile, 'r')
+opts, args = getopt.getopt(sys.argv[1:], "c:", ["conf="])
+for opt, arg in opts:
+    if opt in ("-c", "--conf"):
+        configfile = arg
 
+file = open(configfile, 'r')
 while file:
     line = file.readline()
     if not line:
