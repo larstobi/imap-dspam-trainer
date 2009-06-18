@@ -28,7 +28,6 @@ while file:
 
 server = IMAP4(host,port)
 server.login(user,password)
-mboxes = server.list()[1]
 r = server.select(folder)
 r, data = server.search(None, "(ALL)")
 
