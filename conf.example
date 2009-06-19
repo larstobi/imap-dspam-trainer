@@ -1,5 +1,6 @@
 host=localhost
-port=143
+port=993
+ssl=yes
 user=myusername
 password=mypassword
 imapfolder=INBOX

@@ -19,6 +19,8 @@ while file:
         host = strip(val)
     elif var == 'port':
         port = int(strip(val))
+    elif var == 'ssl':
+        ssl = strip(val)
     elif var == 'user':
         user = strip(val)
     elif var == 'password':
@@ -28,7 +30,11 @@ while file:
     elif var == 'localfolder':
         localfolder = strip(val)
 
-server = IMAP4(host,port)
+if ssl == 'yes':
+    server = IMAP4_SSL(host,port)
+else:
+    server = IMAP4(host,port)
+
 server.login(user,password)
 r = server.select(imapfolder)
 r, data = server.search(None, "(ALL)")
